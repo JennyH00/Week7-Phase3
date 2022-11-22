@@ -2,6 +2,7 @@
 # CIS261
 # November 19, 2022
 # write the line of code to import the datetime library (Hint: look at week 1 labs)
+from datetime import datetime
 
 def GetEmpName():
     empname = input("Enter employee name: ")
@@ -33,7 +34,7 @@ def printinfo(DetailsPrinted):
     TotNetPay = 0.00
 ###################################################################
     # write the line of code to open Employees.txt file in read mode and assign to EmpFile
-    
+    EmpFile = open("Employees.txt", "r")
 
     while True:
         rundate = input ("Enter start date for report (MM/DD/YYYY) or All for all data in file: ")
@@ -45,15 +46,17 @@ def printinfo(DetailsPrinted):
         except ValueError:
             print("Invalid date format. Try again.")
             print()
-            continue  # skip next if statement and re-start loop
+            continue  # skip next while statement and re-start loop
     while True:
         # write the line of code to read a record from EmpFile and assign it to EmpDetail
+        EmpDetail = EmpFile.readline()
 
         if not EmpDetail:
             break
         #write the line of code to remove the carriage return from the end of the record read from the file
-
+        EmpDetail = EmpDetail.replace("\n", "")
         #write the line of code to split the record read in on the pipe delimiter and assign it to EmpList
+        EmpList = EmpDetail.split("|")
 
         fromdate = EmpList[0]
         if (str(rundate).upper() != "ALL"):
