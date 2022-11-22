@@ -7,8 +7,8 @@ def GetEmpName():
     empname = input("Enter employee name: ")
     return empname
 def GetDatesWorked():
-    fromdate = input("Enter Start Date (mm/dd/yyyy: ")
-    todate = input("Enter End Date (mm/dd/yyyy: ")
+    fromdate = input("Enter Start Date (mm/dd/yyyy): ")
+    todate = input("Enter End Date (mm/dd/yyyy): ")
     return fromdate, todate
 def GetHoursWorked():
     hours = float(input('Enter amount of hours worked:  '))
@@ -33,6 +33,7 @@ def printinfo(DetailsPrinted):
     TotNetPay = 0.00
 ###################################################################
     # write the line of code to open Employees.txt file in read mode and assign to EmpFile
+    
 
     while True:
         rundate = input ("Enter start date for report (MM/DD/YYYY) or All for all data in file: ")
@@ -95,7 +96,8 @@ def PrintTotals(EmpTotals):
 
 if __name__ == "__main__":
     # write the line of code to open a file Employees.txt in append mode and assign it to EmpFile
-
+    Empfile = open("Employees.txt", "a")
+  
     #EmpDetailList = []
     EmpTotals = {}
     DetailsPrinted = False
@@ -109,12 +111,15 @@ if __name__ == "__main__":
         taxrate = GetTaxRate()
         ##############################################################
         # write the line of code that will concatenate fromdate, todate, empname, hours, hourlyrate, and taxrate. Pipe delimit each value and add a carriage return to the end of the line
+        EmpDetail = fromdate + "|" + todate + "|" + empname + "|" + str(hours) + "|" + str(hourlyrate) + "|" + str(taxrate) + "\n"
         # and assign the line to EmpDetail
- 
-        # write the liie of code that will write EmpDetail to EmpFile
-    
-    # write the line of code to close EmpFile
+        
+        # write the line of code that will write EmpDetail to EmpFile
+        EmpFile.write(EmpDetail)
 
+    # write the line of code to close EmpFile
+    EmpFile.close()
+    
     printinfo(DetailsPrinted)
 
 
