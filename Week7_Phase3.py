@@ -99,7 +99,7 @@ def PrintTotals(EmpTotals):
 
 if __name__ == "__main__":
     # write the line of code to open a file Employees.txt in append mode and assign it to EmpFile
-    Empfile = open("Employees.txt", "a")
+    EmpFile = open("Employees.txt", "a")
   
     #EmpDetailList = []
     EmpTotals = {}
